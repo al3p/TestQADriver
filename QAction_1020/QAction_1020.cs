@@ -7,6 +7,7 @@ using Skyline.DataMiner.Scripting;
 
 /// <summary>
 /// DataMiner QAction Class: QACountDown.
+/// Minimal modification to check code alignments on GitHub
 /// </summary>
 public static class QAction
 {

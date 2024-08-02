@@ -22,14 +22,24 @@ public static class Parameter
 		public const int loopcounter = 110;
 		/// <summary>PID: 1010 | Type: write</summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public const int countup_1010 = 1010;
+		public const int countupone_1010 = 1010;
 		/// <summary>PID: 1010 | Type: write</summary>
-		public const int countup = 1010;
+		public const int countupone = 1010;
 		/// <summary>PID: 1020 | Type: write</summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public const int countdown_1020 = 1020;
+		public const int countdownone_1020 = 1020;
 		/// <summary>PID: 1020 | Type: write</summary>
-		public const int countdown = 1020;
+		public const int countdownone = 1020;
+		/// <summary>PID: 1030 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int countuptwo_1030 = 1030;
+		/// <summary>PID: 1030 | Type: write</summary>
+		public const int countuptwo = 1030;
+		/// <summary>PID: 1040 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int countdowntwo_1040 = 1040;
+		/// <summary>PID: 1040 | Type: write</summary>
+		public const int countdowntwo = 1040;
 	}
 }
 public class WriteParameters
@@ -37,9 +47,13 @@ public class WriteParameters
 	/// <summary>PID: 110  | Type: write</summary>
 	public System.Object Loopcounter {get { return Protocol.GetParameter(110); }set { Protocol.SetParameter(110, value); }}
 	/// <summary>PID: 1010  | Type: write | DISCREETS: Up = 1</summary>
-	public System.Object Countup {get { return Protocol.GetParameter(1010); }set { Protocol.SetParameter(1010, value); }}
+	public System.Object Countupone {get { return Protocol.GetParameter(1010); }set { Protocol.SetParameter(1010, value); }}
 	/// <summary>PID: 1020  | Type: write | DISCREETS: Down = 2</summary>
-	public System.Object Countdown {get { return Protocol.GetParameter(1020); }set { Protocol.SetParameter(1020, value); }}
+	public System.Object Countdownone {get { return Protocol.GetParameter(1020); }set { Protocol.SetParameter(1020, value); }}
+	/// <summary>PID: 1030  | Type: write | DISCREETS: Up = 1</summary>
+	public System.Object Countuptwo {get { return Protocol.GetParameter(1030); }set { Protocol.SetParameter(1030, value); }}
+	/// <summary>PID: 1040  | Type: write | DISCREETS: Down = 2</summary>
+	public System.Object Countdowntwo {get { return Protocol.GetParameter(1040); }set { Protocol.SetParameter(1040, value); }}
 	public SLProtocolExt Protocol;
 	public WriteParameters(SLProtocolExt protocol)
 	{
@@ -52,10 +66,14 @@ public interface SLProtocolExt : SLProtocol
 	object Loopcounter_10 { get; set; }
 	object Loopcounter { get; set; }
 	object Loopcounter_110 { get; set; }
-	object Countup_1010 { get; set; }
-	object Countup { get; set; }
-	object Countdown_1020 { get; set; }
-	object Countdown { get; set; }
+	object Countupone_1010 { get; set; }
+	object Countupone { get; set; }
+	object Countdownone_1020 { get; set; }
+	object Countdownone { get; set; }
+	object Countuptwo_1030 { get; set; }
+	object Countuptwo { get; set; }
+	object Countdowntwo_1040 { get; set; }
+	object Countdowntwo { get; set; }
 	WriteParameters Write { get; set; }
 }
 public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
@@ -71,13 +89,21 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Loopcounter_110 {get { return GetParameter(110); }set { SetParameter(110, value); }}
 	/// <summary>PID: 1010  | Type: write | DISCREETS: Up = 1</summary>
-	public System.Object Countup_1010 {get { return GetParameter(1010); }set { SetParameter(1010, value); }}
+	public System.Object Countupone_1010 {get { return GetParameter(1010); }set { SetParameter(1010, value); }}
 	/// <summary>PID: 1010  | Type: write | DISCREETS: Up = 1</summary>
-	public System.Object Countup {get { return Write.Countup; }set { Write.Countup = value; }}
+	public System.Object Countupone {get { return Write.Countupone; }set { Write.Countupone = value; }}
 	/// <summary>PID: 1020  | Type: write | DISCREETS: Down = 2</summary>
-	public System.Object Countdown_1020 {get { return GetParameter(1020); }set { SetParameter(1020, value); }}
+	public System.Object Countdownone_1020 {get { return GetParameter(1020); }set { SetParameter(1020, value); }}
 	/// <summary>PID: 1020  | Type: write | DISCREETS: Down = 2</summary>
-	public System.Object Countdown {get { return Write.Countdown; }set { Write.Countdown = value; }}
+	public System.Object Countdownone {get { return Write.Countdownone; }set { Write.Countdownone = value; }}
+	/// <summary>PID: 1030  | Type: write | DISCREETS: Up = 1</summary>
+	public System.Object Countuptwo_1030 {get { return GetParameter(1030); }set { SetParameter(1030, value); }}
+	/// <summary>PID: 1030  | Type: write | DISCREETS: Up = 1</summary>
+	public System.Object Countuptwo {get { return Write.Countuptwo; }set { Write.Countuptwo = value; }}
+	/// <summary>PID: 1040  | Type: write | DISCREETS: Down = 2</summary>
+	public System.Object Countdowntwo_1040 {get { return GetParameter(1040); }set { SetParameter(1040, value); }}
+	/// <summary>PID: 1040  | Type: write | DISCREETS: Down = 2</summary>
+	public System.Object Countdowntwo {get { return Write.Countdowntwo; }set { Write.Countdowntwo = value; }}
 	public WriteParameters Write { get; set; }
 	public ConcreteSLProtocolExt()
 	{

@@ -1,4 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+This driver/protocol/connector written from scratch based on standard template from Skyline Communications NV.
+
+This software is public domain
+
+There is no warranty explicit or implied of correctness or fitness for purpose
+Use at your own risk: the user is the only responsible and accountable for unintended consequences, 
+direct or indirect damages and mulfunctions whatsoever resulting from the usage, modification or adaptation 
+of this software.
+
+Developed on DM: 10.4.7.0-14517
+NuGet package "Skyline.DataMiner.Dev.Protocol": 10.2.0.25
+-->
+
+
 <Protocol xmlns="http://www.skyline.be/protocol">
 	<Name>TestQADriver</Name>
 	<Description>TestQADriver DataMiner connector</Description>
@@ -10,7 +26,7 @@
 	<DeviceOID>0</DeviceOID>
 	<ElementType></ElementType>
 	<Type relativeTimers="true">virtual</Type>
-	<Display defaultPage="General" pageOrder="General;----------;Data" wideColumnPages=""/>
+	<Display defaultPage="Main" pageOrder="Main;----------;Data" wideColumnPages=""/>
 	<SNMP includepages="true">auto</SNMP>
 
 	<Compliancies>
@@ -26,7 +42,7 @@
 		</Param>
 		
 		<Param id="10" trending="true">
-			<Name>loopCounter</Name>
+			<Name>LoopCounter</Name>
 			<Description>Counting clicks</Description>
 			<Type>read</Type>
 			<Information>
@@ -49,7 +65,7 @@
 				</Range>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Main</Page>
 						<Column>0</Column>
 						<Row>0</Row>
 					</Position>
@@ -60,7 +76,7 @@
 			</Measurement>
 		</Param>
 		<Param id="110" setter="true">
-			<Name>loopCounter</Name>
+			<Name>LoopCounter</Name>
 			<Description>Counting clicks</Description>
 			<Type>write</Type>
 			<Interprete>
@@ -89,7 +105,7 @@
 		</Param>
 		
 		<Param id="1010">
-			<Name>CountUp</Name>
+			<Name>CountUpOne</Name>
 			<Type>write</Type>
 			<Information>
 			</Information>
@@ -102,8 +118,8 @@
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
-						<Column>1</Column>
+						<Page>Main</Page>
+						<Column>0</Column>
 						<Row>2</Row>
 					</Position>
 				</Positions>
@@ -119,7 +135,7 @@
 			</Measurement>
 		</Param>
 		<Param id="1020">
-			<Name>CountDown</Name>
+			<Name>CountDownOne</Name>
 			<Type>write</Type>
 			<Information>
 			</Information>
@@ -132,8 +148,8 @@
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
-						<Column>1</Column>
+						<Page>Main</Page>
+						<Column>0</Column>
 						<Row>3</Row>
 					</Position>
 				</Positions>
@@ -148,14 +164,84 @@
 				</Discreets>
 			</Measurement>
 		</Param>
+		
+		<Param id="1030">
+			<Name>CountUpTwo</Name>
+			<Type>write</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>Main</Page>
+						<Column>1</Column>
+						<Row>3</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type width="110">button</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Up</Display>
+						<Value>1</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="1040">
+			<Name>CountDownTwo</Name>
+			<Type>write</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>Main</Page>
+						<Column>1</Column>
+						<Row>4</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type width="110">button</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Down</Display>
+						<Value>2</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		
 	</Params>
 
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
 		<QAction id="2" name="After Startup" encoding="csharp" triggers="2" />
-		<QAction id="1010" name="QACountUp" encoding="csharp" triggers="1010">
+
+		<!-- case one: every button triggers a different QAction which entri point is the "Run" method
+		-->
+		<QAction id="1010" name="QACountUpOne" encoding="csharp" triggers="1010">
 		</QAction>
-		<QAction id="1020" name="QACountDown" encoding="csharp" triggers="1020">
+		<QAction id="1020" name="QACountDownOne" encoding="csharp" triggers="1020">
+		</QAction>
+
+		<!-- case two: both button triggers the same QAction which has different entry points for different triggers
+		-->
+		<QAction id="1030" name="QActionName" encoding="csharp" triggers="1030;1040" entryPoint="CountUp2;CountDown2">
 		</QAction>
 	</QActions>
 

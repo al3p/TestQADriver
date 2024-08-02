@@ -128,7 +128,7 @@ NuGet package "Skyline.DataMiner.Dev.Protocol": 10.2.0.25
 				<Type width="110">button</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Up</Display>
+						<Display>Up +1</Display>
 						<Value>1</Value>
 					</Discreet>
 				</Discreets>
@@ -136,37 +136,6 @@ NuGet package "Skyline.DataMiner.Dev.Protocol": 10.2.0.25
 		</Param>
 		<Param id="1020">
 			<Name>CountDownOne</Name>
-			<Type>write</Type>
-			<Information>
-			</Information>
-			<Interprete>
-				<RawType>numeric text</RawType>
-				<Type>double</Type>
-				<LengthType>next param</LengthType>
-			</Interprete>
-			<Display>
-				<RTDisplay>true</RTDisplay>
-				<Positions>
-					<Position>
-						<Page>Main</Page>
-						<Column>0</Column>
-						<Row>3</Row>
-					</Position>
-				</Positions>
-			</Display>
-			<Measurement>
-				<Type width="110">button</Type>
-				<Discreets>
-					<Discreet>
-						<Display>Down</Display>
-						<Value>2</Value>
-					</Discreet>
-				</Discreets>
-			</Measurement>
-		</Param>
-		
-		<Param id="1030">
-			<Name>CountUpTwo</Name>
 			<Type>write</Type>
 			<Information>
 			</Information>
@@ -189,7 +158,38 @@ NuGet package "Skyline.DataMiner.Dev.Protocol": 10.2.0.25
 				<Type width="110">button</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Up</Display>
+						<Display>Down -1</Display>
+						<Value>2</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		
+		<Param id="1030">
+			<Name>CountUpTwo</Name>
+			<Type>write</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>Main</Page>
+						<Column>0</Column>
+						<Row>3</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type width="110">button</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Up +2</Display>
 						<Value>1</Value>
 					</Discreet>
 				</Discreets>
@@ -219,7 +219,68 @@ NuGet package "Skyline.DataMiner.Dev.Protocol": 10.2.0.25
 				<Type width="110">button</Type>
 				<Discreets>
 					<Discreet>
-						<Display>Down</Display>
+						<Display>Down -2</Display>
+						<Value>2</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		
+		<Param id="1050">
+			<Name>CountUpFive</Name>
+			<Type>write</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>Main</Page>
+						<Column>0</Column>
+						<Row>4</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type width="110">button</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Up +5</Display>
+						<Value>1</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="1060">
+			<Name>CountDownFive</Name>
+			<Type>write</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>Main</Page>
+						<Column>1</Column>
+						<Row>5</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type width="110">button</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Down -5</Display>
 						<Value>2</Value>
 					</Discreet>
 				</Discreets>
@@ -242,6 +303,12 @@ NuGet package "Skyline.DataMiner.Dev.Protocol": 10.2.0.25
 		<!-- case two: both button triggers the same QAction which has different entry points for different triggers
 		-->
 		<QAction id="1030" name="QActionName" encoding="csharp" triggers="1030;1040" entryPoint="CountUp2;CountDown2">
+		</QAction>
+
+		<!-- case three: both button triggers the same QAction which has different entry points for different triggers
+		     parameters retrieved via SLProtocolExt
+		-->
+		<QAction id="1050" name="QActionName" encoding="csharp" triggers="1030;1040" entryPoint="CountUp5;CountDown5">
 		</QAction>
 	</QActions>
 

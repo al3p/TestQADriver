@@ -308,7 +308,7 @@ NuGet package "Skyline.DataMiner.Dev.Protocol": 10.2.0.25
 		<!-- case three: both button triggers the same QAction which has different entry points for different triggers
 		     parameters retrieved via SLProtocolExt
 		-->
-		<QAction id="1050" name="QActionName" encoding="csharp" triggers="1030;1040" entryPoint="CountUp5;CountDown5">
+		<QAction id="1050" name="QActionName" encoding="csharp" triggers="1050;1060" entryPoint="CountUp5;CountDown5">
 		</QAction>
 	</QActions>
 

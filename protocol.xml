@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <!--
-This driver/protocol/connector written from scratch based on standard template from Skyline Communications NV.
+This driver/protocol/connector is written from scratch based on standard code snippets.
 
-This software is public domain
+This software is in the public domain.
+There is no warranty, explicit or implied, 
+regarding its correctness or fitness for any particular purpose. 
 
-There is no warranty explicit or implied of correctness or fitness for purpose
-Use at your own risk: the user is the only responsible and accountable for unintended consequences, 
-direct or indirect damages and mulfunctions whatsoever resulting from the usage, modification or adaptation 
-of this software.
+Use it at your own risk. 
+The user is solely responsible for any unintended consequences, 
+direct or indirect damages and malfunctions 
+resulting from the usage, modification, or adaptation 
+of this software or any of its parts.
+
+This software is a personal effort and is NOT endorsed, authorized, or supported in any way by SkyLine Communications NV.
 
 Developed on DM: 10.4.7.0-14517
 NuGet package "Skyline.DataMiner.Dev.Protocol": 10.2.0.25
